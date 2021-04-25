@@ -18,11 +18,12 @@ use Symfony\Component\Routing\Annotation\Route as BaseRoute;
  *
  * @Annotation
  */
+#[\Attribute(\Attribute::IS_REPEATABLE | \Attribute::TARGET_CLASS | \Attribute::TARGET_METHOD)]
 class Route extends BaseRoute
 {
-    public function __construct(array $data)
+    public function __construct(...$data)
     {
-        parent::__construct($data);
+        parent::__construct(...$data);
 
         if (!$this->getMethods()) {
             $this->setMethods((array) $this->getMethod());

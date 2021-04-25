@@ -17,6 +17,7 @@ namespace FOS\RestBundle\Controller\Annotations;
  * @Annotation
  * @Target("METHOD")
  */
+#[\Attribute(\Attribute::IS_REPEATABLE | \Attribute::TARGET_METHOD)]
 class Unlink extends Route
 {
     public function getMethod()
