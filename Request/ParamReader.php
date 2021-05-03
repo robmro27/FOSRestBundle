@@ -60,7 +60,15 @@ final class ParamReader implements ParamReaderInterface
      */
     public function getParamsFromClass(\ReflectionClass $class): array
     {
-        $annotations = $this->annotationReader->getClassAnnotations($class);
+        if (\PHP_VERSION_ID >= 80000) {
+            $attributes = $class->getAttributes(ParamInterface::class, \ReflectionAttribute::IS_INSTANCEOF);
+            $annotations = [];
+            foreach ($attributes as $attribute) {
+                $annotations[] = $attribute->newInstance();
+            }
+        }
+
+        $annotations = $annotations ?? $this->annotationReader->getClassAnnotations($class);
 
         return $this->getParamsFromAnnotationArray($annotations);
     }

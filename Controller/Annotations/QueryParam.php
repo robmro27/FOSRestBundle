@@ -21,8 +21,31 @@ use Symfony\Component\HttpFoundation\Request;
  *
  * @author Alexander <iam.asm89@gmail.com>
  */
+#[\Attribute(\Attribute::IS_REPEATABLE | \Attribute::TARGET_CLASS | \Attribute::TARGET_METHOD)]
 class QueryParam extends AbstractScalarParam
 {
+
+    public function __construct($name,
+                                $key = null,
+                                $requirements = null,
+                                $incompatibiles = [],
+                                $default = null,
+                                $description = null,
+                                $strict = null,
+                                $map = null,
+                                $nullable = null )
+    {
+        $this->name = $name;
+        $this->key = $key;
+        $this->requirements = $requirements;
+        $this->incompatibles = $incompatibiles;
+        $this->default = $default;
+        $this->description = $description;
+        $this->strict = $strict;
+        $this->map = $map;
+        $this->nullable = $nullable;
+    }
+
     /**
      * {@inheritdoc}
      */
