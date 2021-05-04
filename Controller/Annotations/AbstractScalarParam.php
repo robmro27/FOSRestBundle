@@ -33,6 +33,16 @@ abstract class AbstractScalarParam extends AbstractParam
     /** @var bool */
     public $allowBlank = true;
 
+    public function __construct($requirements = null, $map = null, $allowBlank = null, ...$params)
+    {
+        $this->requirements = $requirements;
+        $this->map = $map;
+        $this->allowBlank = $allowBlank;
+
+        parent::__construct(...$params);
+    }
+
+
     /** {@inheritdoc} */
     public function getConstraints()
     {

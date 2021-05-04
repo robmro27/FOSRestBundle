@@ -25,25 +25,9 @@ use Symfony\Component\HttpFoundation\Request;
 class QueryParam extends AbstractScalarParam
 {
 
-    public function __construct($name,
-                                $key = null,
-                                $requirements = null,
-                                $incompatibiles = [],
-                                $default = null,
-                                $description = null,
-                                $strict = null,
-                                $map = null,
-                                $nullable = null )
+    public function __construct(...$params)
     {
-        $this->name = $name;
-        $this->key = $key;
-        $this->requirements = $requirements;
-        $this->incompatibles = $incompatibiles;
-        $this->default = $default;
-        $this->description = $description;
-        $this->strict = $strict;
-        $this->map = $map;
-        $this->nullable = $nullable;
+        parent::__construct(...$params);
     }
 
     /**

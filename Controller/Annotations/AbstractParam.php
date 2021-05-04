@@ -43,6 +43,24 @@ abstract class AbstractParam implements ParamInterface
     /** @var array */
     public $incompatibles = [];
 
+    public function __construct(
+        $name,
+        $key = null,
+        $default = null,
+        $description = null,
+        $strict = null,
+        $nullable = null,
+        $incompatibiles = null
+    ) {
+        $this->name = $name;
+        $this->key = $key;
+        $this->default = $default;
+        $this->description = $description;
+        $this->strict = $strict;
+        $this->nullable = $nullable;
+        $this->incompatibles = $incompatibiles;
+    }
+
     /** {@inheritdoc} */
     public function getName()
     {
